@@ -14,7 +14,7 @@ import linkchecker from "./images/logo-link-checker.svg";
 import snapshot from "./images/logo-dom-snapshot.svg";
 import consoleplus from "./images/logo-console-plus.svg";
 
-const ExtensionCards = ({ details, darkMode }) => {
+const ExtensionCards = ({ details, darkMode, setItemActive, deleteItem }) => {
   // const [count, setCount] = useState(-1);
   const arr = [
     devlens,
@@ -31,18 +31,19 @@ const ExtensionCards = ({ details, darkMode }) => {
     consoleplus,
   ];
 
+
   return (
     <div className="card-container">
       {details.map((d, i) => (
         <Card
           // img={d.logo}
-          // setActive={setActive}
           key={i}
           darkMode={darkMode}
           image={arr[i]}
           // image={d.logo}
-          cardName={d.name}
-          cardDetails={d.description}
+          setItemActive={setItemActive}
+          card={d}
+          deleteItem={deleteItem}
         />
       ))}
     </div>

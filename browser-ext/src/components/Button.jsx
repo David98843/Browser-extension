@@ -1,24 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Button = ({ darkMode, btnName, ref }) => {
+const Button = ({ darkMode, btnName, ref, onClick, active_ }) => {
   const [hoverColor, setHoverColor] = useState(false);
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(active_ ? active_ : false);
   let btnColor;
   let btnBgColor;
   let btnBorder;
   // let transition;
 
+  useEffect(() => {
+    setActive(active_);
+  }, [active_]);
+
   if (darkMode && hoverColor) {
-    btnColor = "#FBFFFF";
-    btnBgColor = "#525866";
+    // btnColor = "#FBFFFF";
+    // btnBgColor = "#525866";
     btnBorder = "1px solid transparent";
   } else if (darkMode && active) {
     btnColor = "black";
     btnBgColor = "hsl(3, 77%, 44%)";
     btnBorder = "1px solid transparent";
   } else if (hoverColor) {
-    btnColor = "#878D9D";
-    btnBgColor = "#F6FAFD";
+    // btnColor = "#878D9D";
+    // btnBgColor = "#F6FAFD";
     btnBorder = "1px solid transparent";
   } else if (darkMode) {
     btnColor = "white";
@@ -35,6 +39,7 @@ const Button = ({ darkMode, btnName, ref }) => {
     <button
       ref={ref}
       onClick={() => {
+        onClick();
         setActive(!active);
       }}
       onMouseOver={() => {
