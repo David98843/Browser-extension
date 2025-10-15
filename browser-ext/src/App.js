@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     const cardDetails = async () => {
-      const getDetails = await getCardDetails();
+      // const getDetails = await getCardDetails();
       setDetails([
     {
       "logo": "./images/logo-devlens.svg",
