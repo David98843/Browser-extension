@@ -24,9 +24,10 @@ const App = () => {
     cardDetails();
   }, []);
   const getCardDetails = async () => {
+    const BASE_URL = 'https://browser-extension-5wor.onrender.com'
     try {
       setIsLoading(true);
-      const res = await fetch("http://localhost:5000/details");
+      const res = await fetch(`${BASE_URL}/details`);
       const data = res.json();
       return data;
     } catch (error) {
